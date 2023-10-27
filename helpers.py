@@ -1,31 +1,30 @@
+class SchemaTypes:
+    extra_attrs = {"type": "", "tag": "", "description": "", "required": False}
 
-extra_attrs = {"type": "", "tag": "", "description": "", "required": False}
+    def __init__(self, value):
+        self.value = value
 
+    def detect_type(self, type):
+        type_attributes = {"type": type}
+        return {**self.extra_attrs, **type_attributes}
 
-def detect_string(value):
-    string_attributes = {"type": "string"}
-    return {**extra_attrs, **string_attributes}
+    def detect_string(self):
+        return self.detect_type("string")
 
+    def detect_integer(self):
+        return self.detect_type("integer")
 
-def detect_integer(value):
-    integer_attributes = {"type": "integer"}
-    return {**extra_attrs, **integer_attributes}
+    def detect_boolean(self):
+        return self.detect_type("boolean")
 
+    def detect_enum(self):
+        return self.detect_type("enum")
 
-def detect_boolean(value):
-    boolean_attributes = {"type": "boolean"}
-    return {**extra_attrs, **boolean_attributes}
-
-
-def detect_enum(value):
-    enum_attributes = {"type": "enum"}
-    return {**extra_attrs, **enum_attributes}
-
-
-def detect_array(value, item_type):
-    array_attributes = {"type": "array", "items": item_type}
-    return {**extra_attrs, **array_attributes}
+    def detect_array(self, item_type):
+        array_attributes = {"type": "array", "items": item_type}
+        return {**self.extra_attrs, **array_attributes}
 
 
-
-# print(detect_string(int))
+# schema_types = SchemaTypes("contact")
+# string_attributes = schema_types.detect_string()
+# print(string_attributes)

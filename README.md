@@ -10,8 +10,9 @@ This program reads a JSON file, analyzes the schema of the "message" part, and g
 
 3. Run the program with the following command:
 
-   ```bash
-   python main.py data/your_input.json schema/your_output.json
+```bash
+   python main.py
+```
 
 - Replace your_input.json with your input file name and your_output.json with your desired output file name.
 
@@ -28,3 +29,10 @@ This program reads a JSON file, analyzes the schema of the "message" part, and g
 
 ## Dependencies
 - This program requires Python 3.10.11
+
+## Note
+if  you would  like to run with other files. Youcan  supply your  input and output file as args
+
+```bash
+   python main.py data/your_input.json schema/your_output.json
+```
